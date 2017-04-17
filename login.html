@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+	<title>Login</title>
+	<meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width" />
+	
+	   <meta name="viewport" content="width=device-width, initial-scale=1">
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+ <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.1.1.min.js"></script>
+ <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+ <style>
+  html
+  {
+    font-size: 100%;
+  }
+
+ 
+</style>
+<link rel="stylesheet" type="text/css" href="css/login.css">
+<!-- CUSTOM STYLE -->  
+
+	
+	<script src="dist/sweetalert.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="dist/sweetalert.css">
+	<script src="js/login.js"></script>
+	<script>
+		$(document).ready(function(){
+			$(document).on("keyup","input[name='ruser']",function(event){
+				$.ajax({
+                        type: "POST",
+                        url: "php/username.php",
+                        data    : {result: $(this).val()},
+                        success: function(response){
+                        	
+                        	if(response=="false"){
+                        		if($('span#rusername').hasClass('glyphicon-ok'))
+                        			$('span#rusername').removeClass('glyphicon-ok');
+                        		if(!$('span#rusername').hasClass('glyphicon-remove'))
+                        			$('span#rusername').addClass('glyphicon-remove');
+                        		//$(input#user).setCustomValidity('hghj');
+                        		
+                        	}
+                        	else{
+                        		if(!$('span#rusername').hasClass('glyphicon-ok'))
+                        			$('span#rusername').addClass('glyphicon-ok');
+                        		if($('span#rusername').hasClass('glyphicon-remove'))
+                        		  $('span#rusername').removeClass('glyphicon-remove');
+                        	
+                        	}
+                        }
+                    });
+			
+			});
+
+		
+
+			$(document).on("click","input[name='lsubmit']",function(event){
+				 $.ajax({
+                        type: "POST",
+                        url: "php/loginProcess.php",
+                        data    : {email: $('#lemail').val(),password: $('#lpassword').val()},
+                        success: function(response){
+                        	if(response=="true"){
+                        		history.back();
+                        		
+                        	}
+                        	else
+                        		swal("Nope", "Incorrect Information. Try Again!", "error");
+                        }
+                    });
+			});
+
+
+		});
+
+		function funcreg(){
+			if($('span#rusername').hasClass('glyphicon-ok')){
+				return true;
+			}
+			else
+				return false;
+		}
+	</script>
+</head>
+
+<body>
+        <!-- TOP NAV WITH LOGO -->  
+<div class=" nav-wrapper container">
+<nav  role="navigation" class="navbar navbar-default" style="z-index:10; background-color: white;" data-spy="affix" data-offset-top="197">
+  <div class="navbar-header">
+            <button type="button" data-target="#navbarCollapse" data-toggle="collapse" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            
+        </div>
+  <div id="navbarCollapse" class="collapse navbar-collapse">
+    <ul class="nav navbar-nav">
+      <li><a href="." >Home</a></li>
+      <li><a href="search.html">Jobs</a></li>
+      <li><a href="resumes.html" >Resumes</a></li>
+      <li><a href="postJob.php" >Post Job</a></li>
+    </ul>
+     <ul class="nav navbar-nav navbar-right">
+      <li style="color: dodgerblue;"><a href="#">login</a></li>
+    </ul>
+  </div>
+
+</nav>
+</div>
+
+<div class="container">
+    
+<div class="center login btn-group pull-right">
+		<p>
+			<label>Email or Username:</label>
+			<input type="text" name="email" id="lemail" style=" width: 100%;padding: 10px 20px; margin: 8px 0; display: inline-block; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box;" placeholder="Enter email or username..."/>
+		</p>
+		<p>
+			<label>Password:</label>
+			<input type="password" name="password" id="lpassword" placeholder="Enter password..."/>
+		</p>
+		<p>
+			<input type="submit" name="lsubmit" value="Login"/>
+			<p type="register">Not register? 
+			<span id="account" type="account">Create an account</span><br>
+			<!--<span id="forget" type="account"> Forgot your password?</span></p>-->
+
+		</p>
+	
+</div>
+
+    <div class="register center btn-group pull-right">
+			<form action="php/registrationProcess.php" method="POST" onsubmit="return funcreg()";>
+		<p>
+			<div class="form-group has-success has-feedback">
+			<label>User Name:</label>
+			<input type="text" style=" width: 100%;padding: 10px 20px; margin: 8px 0; display: inline-block; border: 1px solid; border-radius: 4px; box-sizing: border-box;" name="ruser"  id='user' required data-toggle="username" data-placement="top" title="Enter valid username"  placeholder="Enter username..."/>
+			<span id="rusername" class="glyphicon glyphicon-remove form-control-feedback"></span>
+			</div>
+		</p>
+
+		<p>
+			<div class="form-group has-success has-feedback">
+			<label>Full Name:</label>
+			<input type="text" style=" width: 100%;padding: 10px 20px; margin: 8px 0; display: inline-block; border: 1px solid; border-radius: 4px; box-sizing: border-box;" name="name"  id='name' required data-toggle="name" data-placement="top" title="Enter valid username"  placeholder="Enter full name..."/>
+			</div>
+		</p>
+
+		<p>
+			<div class="form-group has-success has-feedback">
+			<label>Email:</label>
+			<input type="email" name="remail" id="remail" required data-toggle="email" data-placement="top" title="email address"  placeholder="Enter email..."/>
+			</div>
+		</p>
+		<p>
+			<div class="form-group has-success has-feedback">
+			<label>Password:</label>
+			<input type="password" name="password" id="rpass" pattern=".{4,}"   required data-toggle="password" data-placement="top" title="atleast 4 characters"  placeholder="Enter password..."/>
+		
+			</div>
+		</p>
+		<p>
+			<input type="submit" id="rsubmit" name="submit" onclick="resubmit()" style="display: block" value="Register"/>
+			<p type="register">Already register? 
+			<span id="login" type="account">Login</span><br>
+			</p>
+		</p>
+		</form>
+</div>
+
+<div class="forget center btn-group pull-right">
+
+		<p>
+			<label>Email:</label>
+			<input type="email" name="email" id="email" placeholder="Enter email.."/>
+		</p>
+		<p>
+			<button type="submit" name="submit" onclick="forgotPassCon()">Submit</button>
+			<p type="register"> <span id="flogin" type="account">Login</span></p>
+		</p>
+
+</div>
+</div>
+</div>
+</div>
+</section>
+</body>
+
+</html>

@@ -1,0 +1,53 @@
+a+  b+  c
+Success
+Productions:
+goal -> expr
+expr -> term expr2
+expr2 -> e
+term -> factor term2
+term2 -> + factor term2
+term2 -> + factor term2
+term2 -> e
+factor -> identifier
+factor -> identifier
+factor -> identifier
+(a+b
+Error: ) missing
+Fail
+a(b+c)
+Success
+Productions:
+goal -> expr
+expr -> term expr2
+expr2 -> e
+term -> factor term2
+term2 -> e
+factor -> identifier
+expr -> term expr2
+expr2 -> e
+term -> factor term2
+term2 -> + factor term2
+term2 -> e
+factor -> identifier
+factor -> identifier
+1+4*b+4
+Success
+Productions:
+goal -> expr
+expr -> term expr2
+expr2 -> e
+term -> factor term2
+term2 -> + factor term2
+term2 -> * factor term2
+term2 -> + factor term2
+term2 -> e
+factor -> number
+factor -> identifier
+factor -> number
+factor -> number
+1++23+
+Error: Illegal character
+Fail
++)
+Error: Illegal character
+Fail
