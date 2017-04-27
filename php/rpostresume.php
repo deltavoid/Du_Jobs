@@ -18,7 +18,11 @@
 	//$connection= mysqli_connect("localhost", "root", "abcd");
 	mysqli_select_db($connection,"login");
 	
-	mysqli_query($connection,"insert into resumes(user_id,title,csummary,cobjective,experience,education,ainformation,pinformation,reference) values('$id','$title','$csummary','$cobjective','$experience','$education','$ainformation','$pinformation','$reference')") or die("Failed to query database ".mysqli_error($connection));
+	mysqli_select_db($connection,"login");
+	$stmt = $connection->prepare("insert into resumes(user_id,title,csummary,cobjective,experience,education,ainformation,pinformation,reference) values(?,?,?,?,?,?,?,?,?)") or die("Failed to query database ".mysqli_error($connection));
+	$stmt->bind_param('sssssssss',$id,$title,$csummary,$cobjective,$experience,$education,$ainformation,$pinformation,$reference);
+	$stmt->execute();
+	/*mysqli_query($connection,"insert into resumes(user_id,title,csummary,cobjective,experience,education,ainformation,pinformation,reference) values('$id','$title','$csummary','$cobjective','$experience','$education','$ainformation','$pinformation','$reference')") or die("Failed to query database ".mysqli_error($connection));*/
 	echo 'found';
 	
 ?>

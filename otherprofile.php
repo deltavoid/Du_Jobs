@@ -11,7 +11,7 @@
   <title>Picard-Profile</title>
   <meta charset="UTF-8">
  
-  <?php session_start();?>
+
    <meta name="viewport" content="width=device-width, initial-scale=1">
  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
  <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.1.1.min.js"></script>
@@ -33,7 +33,7 @@
   body{
    background-color: white;
 }
-.nav-wrapper, .nav {
+.nav-wrapper{
   height: 60px;
 }
  
@@ -55,19 +55,15 @@
              $.ajax({
                   type: "POST",
                   url: "php/suser.php",
-                  success: function(response){
+                 success: function(response){
 
             
                     if(response!=""){
-                      if(!$('#logg').hasClass('dropdown'))
-                      $('#logg').addClass('dropdown');
-                       var srlog= '<a class="dropdown-toggle" data-toggle="dropdown" href="#" >'+response+"  "+'<span class="caret"></span></a><ul role="menu" class="dropdown-menu"><li><a href="profilepage.php">Profile</a></li><li><a href="php/signout.php">Signout</a></li></ul>';
+                       var srlog='<li><a id="appbutton" href="joblog.php"> Job Logs </a></li><li><a id="jobbutton"  href="recruitment.php" >Recruitment </a></li> <li><a id="probutton" href="profilepage.php">'+response+'</a></li> <li><a href="php/signout.php">Signout</a></li>';
                         $('#logg').html(srlog);
                     }
                     else{
-                      if($('#logg').hasClass('dropdown'))
-                        $('#logg').removeClass('dropdown');
-                        $('#logg').html('<a href="login.html">login</a>');
+                        $('#logg').html('<li><a href="login.html">login</a></li>');
                       }
 
                   }
@@ -146,8 +142,8 @@
 
 <body>
         <!-- TOP NAV WITH LOGO --> 
-<div class=" nav-wrapper container">
-<nav  role="navigation" class="navbar navbar-default" style="z-index:10; background-color: white;" data-spy="affix" data-offset-top="197">
+<div class=" nav-wrapper ">
+<nav  role="navigation" class="navbar navbar-default container" style="z-index:10; background-color: white;" data-spy="affix" data-offset-top="197">
   <div class="navbar-header">
             <button type="button" data-target="#navbarCollapse" data-toggle="collapse" class="navbar-toggle">
                 <span class="sr-only">Toggle navigation</span>
@@ -165,8 +161,7 @@
       <li><a href="resumes.html" >Resumes</a></li>
       <li><a href="postJob.php" >Post Job</a></li>
     </ul>
-     <ul class="nav navbar-nav navbar-right">
-      <li id="logg"></li>
+       <ul id="logg" class="nav navbar-nav navbar-right">
     </ul>
   </div>
 

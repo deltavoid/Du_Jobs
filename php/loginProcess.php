@@ -6,7 +6,11 @@
 	$connection=serverConnect();
 	//$connection= mysqli_connect("localhost", "root", "abcd");
 	mysqli_select_db($connection,"login");
-	$result = mysqli_query($connection,"select * from users where  (email='$email' or username='$email') and password='$password'") or die("Failed to query database ".mysqli_error($connection));
+	$stmt = $connection->prepare("select * from users where  (email=? or username=?) and password=?") or die("Failed to query database ".mysqli_error($connection));
+		$stmt->bind_param('sss',$email,$email,$password);
+	$stmt->execute();
+	$result = $stmt->get_result();
+	/*$result = mysqli_query($connection,"select * from users where  (email='$email' or username='$email') and password='$password'") or die("Failed to query database ".mysqli_error($connection));*/
 	if(mysqli_num_rows($result)>0){
 	$row =mysqli_fetch_array($result);
 	if(($row['email']==$email || $row['username']==$email) && $row['password']==$password){

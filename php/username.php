@@ -8,8 +8,12 @@
 	$connection=serverConnect();
 	//$connection= mysqli_connect("localhost", "root", "abcd");
 	mysqli_select_db($connection,"login");
-	$result = mysqli_query($connection,"select * from users where username='$user'") or die("Failed to query database ".mysqli_error($connection));
+	$stmt = $connection->prepare("select * from users where username=?") or die("Failed to query database ".mysqli_error($connection));
+		$stmt->bind_param('s',$user);
+	$stmt->execute();
+	/*$result = mysqli_query($connection,"select * from users where username='$user'") or die("Failed to query database ".mysqli_error($connection));*/
 	$flag=false;
+	$result = $stmt->get_result();
 	if(mysqli_num_rows($result)>0){
 		while($row = mysqli_fetch_assoc($result)) {
 			$flag=true;

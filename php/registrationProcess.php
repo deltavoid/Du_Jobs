@@ -15,12 +15,18 @@
 		echo "Already have an account with this mail";
 	}
 	else{
-
-	$result = mysqli_query($connection,"insert into users(email,password,username) values('$email','$password','$user')") or die("Failed to query database ".mysqli_error($connection));
+	$stmt = $connection->prepare("insert into users(email,password,username) values(?,?,?)") or die("Failed to query database ".mysqli_error($connection));
+	$stmt->bind_param('sss',$email,$password,$user);
+	$stmt->execute();
+	/*
+	$result = mysqli_query($connection,"insert into users(email,password,username) values('$email','$password','$user')") or die("Failed to query database ".mysqli_error($connection));*/
 	$result1 = mysqli_query($connection,"select * from users where email='$email'") or die("Failed to query database ".mysqli_error($connection));
 	$row1 =mysqli_fetch_array($result1);
 	$v=$row1['id'];
-	$result = mysqli_query($connection,"insert into userinfo(user_id,name) values('$v','$name')") or die("Failed to query database ".mysqli_error($connection));
+	$stmt = $connection->prepare("insert into userinfo(user_id,name) values(?,?)") or die("Failed to query database ".mysqli_error($connection));
+	$stmt->bind_param('ss',$v,$name);
+	$stmt->execute();
+	/*$result = mysqli_query($connection,"insert into userinfo(user_id,name) values('$v','$name')") or die("Failed to query database ".mysqli_error($connection));*/
 		$_SESSION['id']=$row1['id'];
 		$_SESSION['email']=$row1['email'];
 		$_SESSION['username']=$row1['username'];
