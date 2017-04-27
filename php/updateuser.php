@@ -14,7 +14,7 @@
 	$contact=$_POST['contact'];
 	$bio=$_POST['bio'];
 	//$connection= mysqli_connect("localhost", "root", "abcd");
-	mysqli_select_db($connection,"login");
+	mysqli_select_db($connection,"dujobs0622");
 	$result = mysqli_query($connection,"select * from userinfo where user_id='$user_id'") or die("Failed to query database ".mysqli_error($connection));
 	if (mysqli_num_rows($result) > 0) {
 		$stmt = $connection->prepare("update userinfo set name = ?, utitle=?, institution=?, address=?, contact=?, bio=? where user_id=?") or die("Failed to query database ".mysqli_error($connection));

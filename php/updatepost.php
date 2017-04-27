@@ -21,7 +21,7 @@
 	$other=$_POST['other'];
 	$deadline=$_POST['deadline'];
 	//$connection= mysqli_connect("localhost", "root", "abcd");
-	mysqli_select_db($connection,"login");
+	mysqli_select_db($connection,"dujobs0622");
 		$stmt = $connection->prepare("update postjobs set company=?,title=?, vacancy=?, description=?, jobnature=?, edurequirements=?, exprequirements=?, jobrequirements=?, location=?, salary=?, other=?, deadline=? where id=?") or die("Failed to query database ".mysqli_error($connection));
 	$stmt->bind_param('sssssssssssss', $company,$title,$title,$vacancy,$description,$jobnature,$edureq,$expreq,$jobreq,$location,$salary,$other,$deadline,$post);
 	$stmt->execute();

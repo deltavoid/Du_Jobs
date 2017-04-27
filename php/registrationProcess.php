@@ -8,7 +8,7 @@
 	$name=$_POST['name'];
 	$password = $_POST['password'];
 	//$connection= mysqli_connect("localhost", "root", "abcd");
-	mysqli_select_db($connection,"login");
+	mysqli_select_db($connection,"dujobs0622");
 	$result = mysqli_query($connection,"select * from users where email='$email' or username='$user'") or die("Failed to query database ".mysqli_error($connection));
 	$row =mysqli_fetch_array($result);
 	if($row['email']==$email){

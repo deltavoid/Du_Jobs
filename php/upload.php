@@ -19,7 +19,7 @@ $value=$_POST['value'].$_SESSION['id'];
 		$file_ext=strtolower(end($file_ext));
     	$targetDir="../upload/";
     	$connection=serverConnect();
-		mysqli_select_db($connection,"login");
+		mysqli_select_db($connection,"dujobs0622");
     	$file_name_new=$value.'.'.$file_ext;
 
     	$file_destination=$targetDir.$file_name_new;

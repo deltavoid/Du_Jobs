@@ -10,7 +10,7 @@
 	$sto=$_POST['id'];
 	$letter=$_POST['letter'];
 	//$connection= mysqli_connect("localhost", "root", "abcd");
-	mysqli_select_db($connection,"login");
+	mysqli_select_db($connection,"dujobs0622");
 	$result = mysqli_query($connection,"select * from notifications where sto='$sto' and sby='$id' and type='0'") or die("Failed to query database ".mysqli_error($connection));
 	if (mysqli_num_rows($result) > 0) {
 		$row = mysqli_fetch_assoc($result);
