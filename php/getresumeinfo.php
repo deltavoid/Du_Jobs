@@ -1,5 +1,5 @@
 <?php
-    
+    session_start();
     include 'serverConnection.php';
     $search=$_SESSION['id']; 
     $connection=serverConnect();
