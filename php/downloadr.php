@@ -9,7 +9,7 @@
     $connection=serverConnect();
       $found=array();
     //$connection= mysqli_connect("localhost", "root", "abcd");
-    mysqli_select_db($connection,"dujobs0622");
+  
     $result=null;
    
     $result=mysqli_query($connection, "select * from notifications where id='$value'");

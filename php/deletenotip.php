@@ -9,8 +9,7 @@
     $connection=serverConnect();
       $found=array();
     //$connection= mysqli_connect("localhost", "root", "abcd");
-    mysqli_select_db($connection,"dujobs0622");
-    mysqli_query($connection, "delete from notifications where sto='$value' and type='0'");
+        mysqli_query($connection, "delete from notifications where sto='$value' and type='0'");
    	mysqli_query($connection, "delete from postjobs where id='$value'");
       
 ?>

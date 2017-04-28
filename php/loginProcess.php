@@ -5,7 +5,6 @@
 	$password = $_POST['password'];
 	$connection=serverConnect();
 	//$connection= mysqli_connect("localhost", "root", "abcd");
-	mysqli_select_db($connection,"dujobs0622");
 	$stmt = $connection->prepare("select * from users where  (email=? or username=?) and password=?") or die("Failed to query database ".mysqli_error($connection));
 		$stmt->bind_param('sss',$email,$email,$password);
 	$stmt->execute();

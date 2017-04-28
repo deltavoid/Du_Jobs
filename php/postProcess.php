@@ -19,8 +19,6 @@
 	$salary=$_POST['salary'];
 	$other=$_POST['other'];
 	$deadline=$_POST['deadline'];
-	//$connection= mysqli_connect("localhost", "root", "abcd");
-	mysqli_select_db($connection,"dujobs0622");
 	$stmt = $connection->prepare("insert into postjobs(user_id,company,title,vacancy,description,jobnature,edurequirements,exprequirements,jobrequirements,location,salary,other,deadline) values(?,?,?,?,?,?,?,?,?,?,?,?,?)") or die("Failed to query database ".mysqli_error($connection));
 	$stmt->bind_param('sssssssssssss', $id,$company,$title,$vacancy,$description,$jobnature,$edureq,$expreq,$jobreq,$location,$salary,$other,$deadline);
 	$stmt->execute();

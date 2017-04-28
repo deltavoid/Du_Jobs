@@ -17,7 +17,7 @@ $failed=array();
     	if($check !== false && $file_error==0) {
     		$targetDir="../upload/";
     				$connection=serverConnect();
-					mysqli_select_db($connection,"dujobs0622");
+					mysqli_select_db($connection,"dujobs");
     				$file_name_new=$_SESSION['id'].'.'.$file_ext;
 
     				$file_destination=$targetDir.$file_name_new;

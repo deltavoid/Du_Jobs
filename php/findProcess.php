@@ -5,7 +5,6 @@
     $connection=serverConnect();
       $found=array();
     //$connection= mysqli_connect("localhost", "root", "abcd");
-    mysqli_select_db($connection,"dujobs0622");
     $result=null;
     if($search==""){
        $result=mysqli_query($connection, "select * from userinfo inner join postjobs on userinfo.user_id = postjobs.user_id") or die("Failed to query database ".mysqli_error($connection));

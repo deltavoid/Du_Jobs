@@ -15,10 +15,6 @@
 	$ainformation=$_POST['ainformation'];
 	$pinformation=$_POST['pinformation'];
 	$reference=$_POST['reference'];
-	//$connection= mysqli_connect("localhost", "root", "abcd");
-	
-	
-	mysqli_select_db($connection,"dujobs0622");
 	$stmt = $connection->prepare("insert into resumes(user_id,title,csummary,cobjective,experience,education,ainformation,pinformation,reference) values(?,?,?,?,?,?,?,?,?)") or die("Failed to query database ".mysqli_error($connection));
 	$stmt->bind_param('sssssssss',$id,$title,$csummary,$cobjective,$experience,$education,$ainformation,$pinformation,$reference);
 	$stmt->execute();

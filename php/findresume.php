@@ -5,7 +5,7 @@
     $connection=serverConnect();
       $found=array();
     //$connection= mysqli_connect("localhost", "root", "abcd");
-    mysqli_select_db($connection,"dujobs0622");
+    
     $result=null;
     if($search==""){
        $result=mysqli_query($connection, "select * from userinfo inner join resumes on userinfo.user_id=resumes.user_id");
