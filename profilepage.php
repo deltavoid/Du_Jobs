@@ -59,6 +59,23 @@
                   }
               });
 
+            $.ajax({
+                  type: "POST",
+                  url: "php/countfollower.php",
+                  success: function(response){
+                      $('#bafollr').html(response);
+                  }
+                });
+
+            $.ajax({
+                  type: "POST",
+                  url: "php/countfollowing.php",
+                  success: function(response){
+                      $('#bafolli').html(response);
+                  }
+                });
+
+
             $(document).on("change","input[id='ima']", function(event){
                 
                 $(this).blur();
@@ -152,6 +169,14 @@
           $("#bsubmit").prop("onclick", "clickeditb()").attr("onclick", "clickeditb()");
           $("#bsubmit").html("Edit");
           $("#bcancel").hide();
+      }
+
+      function clickfollower(){
+          window.location.href="searchfollower.php";
+      }
+
+      function clickfollowing(){
+          window.location.href="searchfollowing.php";
       }
 
       function clickeditb(){
@@ -274,7 +299,13 @@
       <button id="editbutton" type="button" style="" name="" value="" class="btn btn-default btn-lg">Change Password </button>
     </div>
 
-     <div class="row">
+    <div class="row">
+      <button id="postbutton" type="button" onclick="clickfollower()" class="btn btn-default btn-lg">Follower <span id="bafollr" class="badge"></span></button>
+    </div>
+    <div class="row">
+      <button id="postbutton" type="button" onclick="clickfollowing()" class="btn btn-default btn-lg">Following <span id="bafolli" class="badge"></span></button>
+    </div>
+    <div class="row">
       <button id="resumebutton" type="button" onclick="postresume()" class="btn btn-default btn-lg">My Resume </button>
     </div>
      <div class="row">

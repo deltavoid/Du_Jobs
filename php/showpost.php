@@ -64,6 +64,15 @@ html
            }
          });
 
+      $.ajax({
+                  type: "POST",
+                  url: "countjobs.php",
+                  data: {id: $_GET['j']},
+                  success: function(response){
+                      $('#bajobs').html(response);
+                  }
+                });
+
         $.ajax({
                         type: "POST",
                         url: "fshowp.php",
@@ -114,6 +123,21 @@ html
                         $('#logg').html('<li><a href="login.html">login</a></li>');
                       }
 
+                    $.ajax({
+                      type: "POST",
+                      url: "isfollow.php",
+                      data: {j: $_GET['j']},
+                      success: function(response){
+
+                        if(response=="true"){
+
+                          $('#bfollow').html('Unfollow');
+                          $("#bfollow").attr("onclick","clickunfollow()");
+                        }
+
+                      }
+                    });
+
                   }
               });
     });
@@ -147,6 +171,56 @@ html
                     }
           });
     }
+
+    function clickfollow(){
+      $.ajax({
+                        type: "POST",
+                        url: "checklogin.php",
+                  success: function(response){
+                    
+                    if(response=="true"){
+                    $.ajax({
+                      type: "POST",
+                      url: "clickfollow.php",
+                      data: {j: $_GET['j']},
+                      success: function(response){
+                        $('#bfollow').html('Unfollow');
+                          $("#bfollow").attr("onclick","clickunfollow()");
+                      }
+                    });
+                    }
+                    else{
+                      swal({
+                              title: "Login",
+                              text: "You must login to follow!",
+                              type: "info",
+                              showCancelButton: true,
+                              confirmButtonColor: "#DD6B55",
+                              confirmButtonText: "Login",
+                              closeOnConfirm: false
+                            },
+                            function(){
+                              window.location.href='../login.html';
+                            });
+                      
+                    }
+                  }
+              });
+        
+    }
+
+    function clickunfollow(){
+        $.ajax({
+                      type: "POST",
+                      url: "clickunfollow.php",
+                      data: {j: $_GET['j']},
+                      success: function(response){
+                        $('#bfollow').html('Follow');
+                          $("#bfollow").attr("onclick","clickfollow()");
+                      }
+              });
+    }
+
       function clickapply(){
           $.ajax({
                         type: "POST",
@@ -177,10 +251,16 @@ html
               });
       }
 
+      
+
       function clickcancel(){
           $('#resume').hide();
           $('#bapp').show();
          $('#profilei').show();
+      }
+
+      function clickjobs(){
+           window.location.href ="showjobs.php?j="+$_GET['j'];
       }
 
       function clicksubmit(){
@@ -252,7 +332,7 @@ html
 
 
 <div class="container " >
-<div id="postapp" class="jumbotron col-sm-6 " style="margin:5px">
+<div id="postapp" class="well col-sm-6 " style="margin:5px">
 <button type="submit" style=" background-color: dodgerblue; color: white;" class="btn btn-default btn-lg pull-right " id="bapp" onclick="clickapply()">Apply</button>
 <h2> Job details </h2>
 <div class="row">
@@ -337,6 +417,8 @@ html
 </div>
 
  <div class="col-sm-5 well" style="margin-top: 5px" align="left" id="profilei" >
+ <button type="submit" style=" background-color: dodgerblue; color: white;" class="btn btn-default btn-lg pull-right " id="bfollow" onclick="clickfollow()">Follow</button>
+ <button type="submit" style=" background-color: dodgerblue; color: white;" class="btn btn-default btn-lg pull-right " id="bfollow" onclick="clickjobs()">Jobs <span id="bajobs" class="badge"></span></button>
       <div class="row">
   <div class="col-sm-12">
       <div align="center">

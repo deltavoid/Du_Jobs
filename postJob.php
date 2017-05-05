@@ -77,7 +77,7 @@ html
                         url: "php/postProcess.php",
                         data    : {company: $('#company').val(),title: $('#title').val(), vacancy: $('#vacancy').val(), description: $('#description').val(), jobnature: $('#jnature option:selected').text(), edureq: $('#edureq').val(), expreq: $('#expreq').val(), jobreq: $('#jobreq').val(), location: $('#location').val(),salary: $('#salary').val(),other: $('#other').val(), deadline: $('#deadline').val()},
                         success: function(response){
-                          alert(response);
+                         
                           $('#company').val('');
                           $('#title').val('');
                           $('#vacancy').val('');

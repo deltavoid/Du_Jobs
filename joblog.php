@@ -97,9 +97,9 @@
                         type: "POST",
                         url: "php/offernoti.php",
                         success: function(response){
-                          if(response>0){
+                          if(response.length>3){
                           
-                 
+                          
                             var obj = JSON.parse(response);
                 
 

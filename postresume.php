@@ -89,6 +89,7 @@ html
                         url: "php/getresumeinfo.php",
                         data    : {title: $('#title').val(), csummary: $('#csummary').val(), cobjective: $('#cobjective').val(), experience: $('#experience').val(), education: $('#education').val(), ainformation: $('#ainformation').val(), pinformation: $('#pinformation').val(), reference: $('#reference').val()},
                         success: function(response){
+                          
                            if(response!=null){
                 
                  

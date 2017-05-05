@@ -102,7 +102,7 @@
                         type: "POST",
                         url: "php/offernotip.php",
                         success: function(response){
-                          if(response>0){
+                          if(response.length>0){
                 
                             
                             var obj = JSON.parse(response);
@@ -159,7 +159,8 @@
               //dataType:'JSON', 
               success: function(response){
                 // put on console what server sent back...
-                if(response>0){
+              
+                if(response.length>0){
                 var obj = JSON.parse(response);
                $.each(obj,function(index,flower){
                     
