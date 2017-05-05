@@ -102,7 +102,7 @@
                         type: "POST",
                         url: "php/offernotip.php",
                         success: function(response){
-                          if(response.length>0){
+                          if(response.length>3){
                 
                             
                             var obj = JSON.parse(response);
