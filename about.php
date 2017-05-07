@@ -170,7 +170,7 @@ html
         <ul class="list-group">
         <li class="list-group-item"> PickaJob is an online job portal for students of Dhaka University </li> 
         <li class="list-group-item"> Students can easily findout and apply for jobs </li>
-        <li class="list-group-item"> It is also a plateform for recruiters, companies and organizations who can easily post their jobs </li>
+        <li class="list-group-item"> It is also a platform for recruiters, companies and organizations who can easily post their jobs </li>
         <li class="list-group-item"> People can also check students' resumes and offer them jobs </li>
         </ul>
         </div>
