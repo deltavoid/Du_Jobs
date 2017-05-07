@@ -1,6 +1,6 @@
 <?php
 
-function sendVerificationBySwift($id,$connection)
+function sendVerificationBySwift($email,$id,$connection)
 {
     require_once '../lib/swift_required.php';
 
@@ -37,7 +37,7 @@ function sendVerificationBySwift($id,$connection)
 	$sto=$_POST['id'];
 	$letter=$_POST['letter'];
 	//$connection= mysqli_connect("localhost", "root", "abcd");
-	sendVerificationBySwift($sto,$connection);
+	sendVerificationBySwift($_SESSION['email'],$sto,$connection);
 	$stmt = $connection->prepare("insert into notifications(type,sto,sby,letter) values('1',?,?,?)") or die("Failed to query database ".mysqli_error($connection));
 		$stmt->bind_param('sss',$sto,$id,$letter);
 		$stmt->execute();
