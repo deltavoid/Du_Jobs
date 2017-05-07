@@ -291,7 +291,7 @@ html
                   url: "setnoti.php",
                   data    : {id: $_GET['id'], letter: $('#letter').val()},
                   success: function(response){
-
+                    console.log(response);
                     swal("Successful!", "You Application is successfully sent!", "success");
                   }
               });

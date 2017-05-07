@@ -25,22 +25,5 @@ $(document).ready(function(){
 			$(".forget").show();
 		});
 	});
-	function forgotPassCon() {
-  		var xhttp = new XMLHttpRequest();
-  		xhttp.onreadystatechange = function() {
-    	if (this.readyState == 4 && this.status == 200) {
-    		if(this.responseText!="failed"){
-      			//alert("sent");
-      			swal("Sent", "A mail has been sent", "success");
-
-      			// window.location="../login/login.html";
-    		}
-      		else
-      			swal("Nope", "You aren't registered", "error");
-    	}
-  		};
-  		xhttp.open("POST", "../php/forgetProcess.php", true);
-  		xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-  		xhttp.send("email="+document.getElementById("email").value); 
-  	} 
+ 
   	

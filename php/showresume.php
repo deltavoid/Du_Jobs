@@ -212,6 +212,7 @@ html
                   url: "setnotir.php",
                   data    : {id: $_GET['id'], letter: $('#letter').val()},
                   success: function(response){
+                    console.log(response);
                     swal("Successful!", "You offer is successfully sent!", "success");
                   }
               });

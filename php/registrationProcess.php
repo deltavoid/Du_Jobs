@@ -1,8 +1,35 @@
 <?php
+session_start();
+function sendVerificationBySwift($email,$name,$id)
+{
+    require_once '../lib/swift_required.php';
+
+    $subject = '[PickaJob][Signup Verification]'; // Give the email a subject
+    $address="http://103.28.121.126/pickajob/verify?email=".$email."&hash=".$id;
+    $body = 'Dear '.$name.',
+
+    Welcome to Du Students Job Portal. Your account has been created
+    Please click this link to activate your account:'.$address;
+
+        $transport = Swift_SmtpTransport::newInstance('smtp.gmail.com', 465, "ssl")
+            ->setUsername('dujobportal@gmail.com')
+            ->setPassword('dujobportal1#')
+            ->setEncryption('ssl');
+
+        $mailer = Swift_Mailer::newInstance($transport);
+
+        $message = Swift_Message::newInstance($subject)
+            ->setFrom(array('noreply@pickajob.com' => 'PickaJob'))
+            ->setTo(array($email))
+            ->setBody($body);
+
+        $result = $mailer->send($message);
+}
+
 	if(isset($_POST['submit'])){
 	include 'serverConnection.php';
 	$connection=serverConnect();
-	session_start();
+	
 	$user=$_POST['ruser'];
 	$email =$_POST['remail'];
 	$name=$_POST['name'];
@@ -28,7 +55,7 @@
 		$_SESSION['id']=$row1['id'];
 		$_SESSION['email']=$row1['email'];
 		$_SESSION['username']=$row1['username'];
-		
+		sendVerificationBySwift($_SESSION['email'],$name,$_SESSION['id']);
 		header("location: ../profilepage.php");
 	}
 }

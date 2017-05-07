@@ -161,7 +161,7 @@
               success: function(response){
                 // put on console what server sent back...
               
-                if(response.length>0){
+                if(response.length>3){
                 var obj = JSON.parse(response);
                $.each(obj,function(index,flower){
                     
