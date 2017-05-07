@@ -42,11 +42,12 @@ html
 <script type="text/javascript">
   function funPost(){
       //alert('dfjk');
+        if($('#register').val().length==10){
         if( $('#title').val().length>0 && $('#csummary').val().length>0 && $('#cobjective').val().length>0  && $('#experience').val().length>0 && $('#education').val().length>0 && $('#pinformation').val().length>0){ 
         $.ajax({
                         type: "POST",
                         url: "php/rpostresume.php",
-                        data    : {title: $('#title').val(), csummary: $('#csummary').val(), cobjective: $('#cobjective').val(), experience: $('#experience').val(), education: $('#education').val(), ainformation: $('#ainformation').val(), pinformation: $('#pinformation').val(), reference: $('#reference').val()},
+                        data    : {title: $('#title').val(), csummary: $('#csummary').val(), cobjective: $('#cobjective').val(), experience: $('#experience').val(), education: $('#education').val(), ainformation: $('#ainformation').val(), pinformation: $('#pinformation').val(), reference: $('#reference').val(),register: $('#register').val()},
                         success: function(response){
                          swal("Successful!", "Your Resume is successfully updated!", "success");
                            // swal("Nope", "Incorrect Information", "error");
@@ -78,6 +79,14 @@ html
           
         sweetAlert("Oops...", "Some field(s) are empty!", "error");
       }
+    }
+    else
+      {
+
+            $('#register').css("border-color","red");
+          
+        sweetAlert("Oops...", "Incorrect Registration Number", "error");
+      }
 
       
 
@@ -87,7 +96,7 @@ html
           $.ajax({
                         type: "POST",
                         url: "php/getresumeinfo.php",
-                        data    : {title: $('#title').val(), csummary: $('#csummary').val(), cobjective: $('#cobjective').val(), experience: $('#experience').val(), education: $('#education').val(), ainformation: $('#ainformation').val(), pinformation: $('#pinformation').val(), reference: $('#reference').val()},
+                        
                         success: function(response){
                           
                            if(response!=null){
@@ -98,10 +107,12 @@ html
 
                           $.each(obj,function(index,flower){
                            // swal("Nope", "Incorrect Information", "error");
+                           $('#register').val(flower['register']);
                            $('#title').val(flower['title']);
                            $('#csummary').val(flower['csummary']);
                            $('#cobjective').val(flower['cobjective']);
                            $('#experience').val(flower['experience']);
+                           $('#education').val(flower['education']);
                            $('#ainformation').val(flower['ainformation']);
                            $('#pinformation').val(flower['pinformation']);
                            $('#reference').val(flower['reference']);
@@ -161,6 +172,12 @@ html
 <div class="container" style="margin-top: 5px" >
 <div class="jumbotron">
 <center> <h2> Resume </h2> </center>
+<div class="row">
+<div class="col-sm-12">
+      <label for="title">Du Registration Number:</label>
+      <textarea type="text" class="form-control" rows="1" id="register"></textarea>
+</div>
+</div>
 <div class="row">
 <div class="col-sm-12">
       <label for="title">Title:</label>

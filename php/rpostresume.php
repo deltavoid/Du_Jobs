@@ -10,13 +10,14 @@
 	$title=$_POST['title'];
 	$csummary=$_POST['csummary'];
 	$cobjective=$_POST['cobjective'];
+	$register=$_POST['register'];
 	$experience=$_POST['experience'];
 	$education=$_POST['education'];
 	$ainformation=$_POST['ainformation'];
 	$pinformation=$_POST['pinformation'];
 	$reference=$_POST['reference'];
-	$stmt = $connection->prepare("insert into resumes(user_id,title,csummary,cobjective,experience,education,ainformation,pinformation,reference) values(?,?,?,?,?,?,?,?,?)") or die("Failed to query database ".mysqli_error($connection));
-	$stmt->bind_param('sssssssss',$id,$title,$csummary,$cobjective,$experience,$education,$ainformation,$pinformation,$reference);
+	$stmt = $connection->prepare("insert into resumes(user_id,title,csummary,cobjective,experience,education,ainformation,pinformation,reference,register) values(?,?,?,?,?,?,?,?,?,?)") or die("Failed to query database ".mysqli_error($connection));
+	$stmt->bind_param('ssssssssss',$id,$title,$csummary,$cobjective,$experience,$education,$ainformation,$pinformation,$reference,$register);
 	$stmt->execute();
 	/*mysqli_query($connection,"insert into resumes(user_id,title,csummary,cobjective,experience,education,ainformation,pinformation,reference) values('$id','$title','$csummary','$cobjective','$experience','$education','$ainformation','$pinformation','$reference')") or die("Failed to query database ".mysqli_error($connection));*/
 	echo 'found';
