@@ -120,7 +120,7 @@ html
                         $('#logg').html(srlog);
                     }
                     else{
-                        $('#logg').html('<li><a href="login.html">login</a></li>');
+                        $('#logg').html('<li><a href="../login.html">login</a></li>');
                       }
 
                     $.ajax({
@@ -322,6 +322,7 @@ html
       <li><a href="../search.html">Jobs</a></li>
       <li><a href="../resumes.html" >Resumes</a></li>
       <li><a href="../postJob.php" >Post Job</a></li>
+      <li><a href="../about.php" >About</a></li>
     </ul>
        <ul id="logg" class="nav navbar-nav navbar-right">
     </ul>

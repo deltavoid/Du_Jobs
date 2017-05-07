@@ -160,6 +160,7 @@
       <li><a href="search.html">Jobs</a></li>
       <li><a href="resumes.html" >Resumes</a></li>
       <li><a href="postJob.php" >Post Job</a></li>
+      <li><a href="about.php" >About</a></li>
     </ul>
        <ul id="logg" class="nav navbar-nav navbar-right">
     </ul>
