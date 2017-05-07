@@ -96,7 +96,7 @@
                       //dataType:'JSON', 
                       data: form_data,
                       success: function(response){
-                        alert(response);
+                       
                       // put on console what server sent back...
                        $("img#profileimg").attr("src","");
                        $("img#profileimg").animate({width: '100px',height: '100px'});
