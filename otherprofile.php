@@ -8,7 +8,7 @@
 <!DOCTYPE html >
 <html lang="en-US">
 <head>
-  <title>Picard-Profile</title>
+  <title>PicaJob-Profile</title>
   <meta charset="UTF-8">
  
 
