@@ -21,10 +21,13 @@ $failed=array();
     				$file_name_new=$_SESSION['id'].'.'.$file_ext;
 
     				$file_destination=$targetDir.$file_name_new;
+    				chmod($targetDir, 0777);
     				if(move_uploaded_file($file_tmp, $file_destination)){
+    					chmod($file_destination, 0777);
     					$uploaded=$file_destination;
     				}
     				else{
+    					echo "hkhgjhk";
     					$failed=$file_name." not uploaded";
     				}
 			}
