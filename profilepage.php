@@ -86,6 +86,7 @@
                   form_data.append('file',filedata);
                   $('div#pclear').html('<input type="file" style="display: none;">');
                  // alert(form_data);
+                 
                   $.ajax({
                       type: "POST",
                       url: "php/profileimage.php",
@@ -101,6 +102,7 @@
                        $("img#profileimg").animate({width: '100px',height: '100px'});
                       var sr="<?php echo $_SESSION['id'] ?>";
                           $("img#profileimg").attr("src","upload/"+sr+"."+file+"?t=" + new Date().getTime());
+                          window.location.reload(true);
                           
                      }
               });  

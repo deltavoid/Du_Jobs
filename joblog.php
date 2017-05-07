@@ -87,6 +87,7 @@
                        $("img#profileimg").animate({width: '100px',height: '100px'});
                       var sr="<?php echo $_SESSION['id'] ?>";
                           $("img#profileimg").attr("src","upload/"+sr+"."+file+"?t=" + new Date().getTime());
+                          window.location.reload(true);
                           
                      }
               });  
@@ -184,6 +185,7 @@
                                     // put on console what server sent back...
                                     $("img#pt"+id+user_id).animate({width: '50px',height: '50px'});
                                     $("img#pt"+id+user_id).attr("src",response+"?"+ new Date().getTime());
+
 
                                }
                              });
