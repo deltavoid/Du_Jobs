@@ -240,6 +240,7 @@ html
                   url: "php/updatepost.php",
                   data    : {id: $_GET['id'], company: $('#company').val(),title: $('#title').val(), vacancy: $('#vacancy').val(), description: $('#description').val(), jobnature: $('#jnature option:selected').text(), edureq: $('#edureq').val(), expreq: $('#expreq').val(), jobreq: $('#jobreq').val(), location: $('#location').val(),salary: $('#salary').val(),other: $('#other').val(), deadline: $('#deadline').val()},
                   success: function(response){
+                    console.log(response);
                     swal("Successful!", "The job post is successfully updated!", "success");  
                   }
               });
