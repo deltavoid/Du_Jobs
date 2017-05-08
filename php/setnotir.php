@@ -37,7 +37,7 @@ function sendVerificationBySwift($email,$id,$connection)
 	$sto=$_POST['id'];
 	$letter=$_POST['letter'];
 	//$connection= mysqli_connect("localhost", "root", "abcd");
-	sendVerificationBySwift($_SESSION['email'],$sto,$connection);
+	//sendVerificationBySwift($_SESSION['email'],$sto,$connection);
 	$stmt = $connection->prepare("insert into notifications(type,sto,sby,letter) values('1',?,?,?)") or die("Failed to query database ".mysqli_error($connection));
 		$stmt->bind_param('sss',$sto,$id,$letter);
 		$stmt->execute();

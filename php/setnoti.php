@@ -36,7 +36,7 @@ function sendVerificationBySwift($email,$id,$connection)
 	$letter=$_POST['letter'];
 	$result = mysqli_query($connection,"select * from notifications where sto='$sto' and sby='$id' and type='0'") or die("Failed to query database ".mysqli_error($connection));
 
-	sendVerificationBySwift($_SESSION['email'],$sto,$connection);
+	//sendVerificationBySwift($_SESSION['email'],$sto,$connection);
 	if (mysqli_num_rows($result) > 0) {
 		$row = mysqli_fetch_assoc($result);
 		$v=$row['id'];
